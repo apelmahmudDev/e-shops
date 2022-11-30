@@ -3,7 +3,6 @@ import { DeleteIcon, EditIcon } from "../icons";
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
-
 	return (
 		<div>
 			<div className="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -33,19 +32,19 @@ const Cart = () => {
 
 					<tbody>
 						{cart?.cart &&
-							cart.cart.map((_, idx) => (
-								<tr key={idx} className="bg-white border-b  hover:bg-gray-50">
+							cart.cart.map(({ _id, image, price, name, quantity }) => (
+								<tr key={_id} className="bg-white border-b  hover:bg-gray-50">
 									<td className="p-4 w-32">
 										<button>
 											<EditIcon />
 										</button>
 									</td>
 									<td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-										Apple Watch
+										{name}
 									</td>
 
 									<td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-										$599
+										${price}
 									</td>
 
 									<td className="py-4 px-6">
@@ -70,7 +69,7 @@ const Cart = () => {
 												</svg>
 											</button>
 											<div className="bg-gray-50 w-10 text-center border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1">
-												1
+												{quantity}
 											</div>
 											<button
 												className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200"
