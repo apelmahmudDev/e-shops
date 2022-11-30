@@ -1,4 +1,27 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../../store/slice/userSlice";
+
 const AddUserModal = ({ handleModal, isOpenModal }) => {
+	const dispatch = useDispatch();
+
+	const [user, setUser] = useState({
+		name: null,
+		email: null,
+		phone: null,
+	});
+
+	const handleChange = (prop) => (event) => {
+		setUser({ ...user, [prop]: event.target.value });
+	};
+
+	// update user
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+		dispatch(updateUser(user));
+		handleModal(false);
+	};
+
 	return (
 		<div
 			aria-hidden="true"
@@ -36,9 +59,9 @@ const AddUserModal = ({ handleModal, isOpenModal }) => {
 						</button>
 					</div>
 
-					<div className="p-6 space-y-6">
-						{/* form */}
-						<form>
+					{/* form */}
+					<form onSubmit={handleFormSubmit}>
+						<div className="p-6 space-y-6">
 							{/* Name */}
 							<div className="mb-5">
 								<label
@@ -48,6 +71,7 @@ const AddUserModal = ({ handleModal, isOpenModal }) => {
 									Name
 								</label>
 								<input
+									onChange={handleChange("name")}
 									type="text"
 									id="name"
 									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -65,6 +89,7 @@ const AddUserModal = ({ handleModal, isOpenModal }) => {
 									Email
 								</label>
 								<input
+									onChange={handleChange("email")}
 									type="email"
 									id="email"
 									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -82,6 +107,7 @@ const AddUserModal = ({ handleModal, isOpenModal }) => {
 									Phone
 								</label>
 								<input
+									onChange={handleChange("phone")}
 									type="tel"
 									id="phone"
 									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -89,17 +115,17 @@ const AddUserModal = ({ handleModal, isOpenModal }) => {
 									required
 								/>
 							</div>
-						</form>
-					</div>
+						</div>
 
-					<div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
-						<button
-							type="button"
-							className="w-full text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-xl px-5 py-3 text-center"
-						>
-							Update
-						</button>
-					</div>
+						<div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
+							<button
+								type="submit"
+								className="w-full text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-xl px-5 py-3 text-center"
+							>
+								Update
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
