@@ -1,5 +1,11 @@
+import Search from "./Search";
+
 const ProductContainer = () => {
-	return <div>ProductContainer</div>;
+	return (
+		<>
+			<Search />
+		</>
+	);
 };
 
 export default ProductContainer;
