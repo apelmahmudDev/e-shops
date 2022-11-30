@@ -43,7 +43,6 @@ export const cartSlice = createSlice({
 				matchProduct.quantity++;
 			}
 
-			// calculation of subTotal
 			state.subTotal = state.cart.reduce(
 				(sum, product) => sum + Number(product.price),
 				0
