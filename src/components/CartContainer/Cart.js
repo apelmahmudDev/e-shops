@@ -95,9 +95,9 @@ const Cart = () => {
 													xmlns="http://www.w3.org/2000/svg"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 											</button>
@@ -120,9 +120,9 @@ const Cart = () => {
 													xmlns="http://www.w3.org/2000/svg"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 											</button>

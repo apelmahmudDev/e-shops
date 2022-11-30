@@ -31,7 +31,7 @@ const CartFooter = () => {
 									>
 										{item.title}
 									</p>
-									<p class="text-gray-600 font-semibold text-xl">
+									<p className="text-gray-600 font-semibold text-xl">
 										${item.money.toFixed(2)}
 									</p>
 								</div>
@@ -39,7 +39,7 @@ const CartFooter = () => {
 						</div>
 					</div>
 					{/* total big full width */}
-					<div class="w-full bg-light flex items-center justify-between py-3 px-2 rounded-sm">
+					<div className="w-full bg-light flex items-center justify-between py-3 px-2 rounded-sm">
 						<p className="text-primary text-base">Products Count (13)</p>
 						<div className="flex items-center justify-between gap-32 ">
 							<p className="text-primary text-2xl font-bold">Total</p>
