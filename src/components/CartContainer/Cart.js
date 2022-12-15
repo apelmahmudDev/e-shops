@@ -36,7 +36,7 @@ const Cart = () => {
 
 	return (
 		<div>
-			<div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+			<div className="overflow-x-auto relative shadow-md rounded-b-md">
 				<table className="w-full text-sm text-left text-gray-500">
 					<thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
 						<tr>
@@ -129,7 +129,7 @@ const Cart = () => {
 										</div>
 									</td>
 									<td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-										$599
+										${price * quantity}
 									</td>
 									<td className="py-4 px-6">
 										<button onClick={() => handleRemoveFromCart(_id)}>

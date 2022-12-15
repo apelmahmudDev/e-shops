@@ -5,7 +5,7 @@ import AddUserModal from "./AddUserModal";
 
 const AddUser = () => {
 	const user = useSelector((state) => state.user);
-	const [isOpenModal, setIsOpenModal] = useState(true);
+	const [isOpenModal, setIsOpenModal] = useState(false);
 
 	const handleModal = (value) => {
 		setIsOpenModal(value);
@@ -16,7 +16,7 @@ const AddUser = () => {
 			<AddUserModal handleModal={handleModal} isOpenModal={isOpenModal} />
 			<button
 				onClick={() => handleModal(true)}
-				className="w-full flex justify-between bg-light py-3 px-4 rounded-sm"
+				className="w-full flex justify-between bg-light py-3 px-4 rounded-t-md"
 			>
 				{/* left site */}
 				<span className="flex gap-3 items-center">

@@ -4,6 +4,24 @@ import { EditIcon, HistoryIcon, PlusIcon } from "../icons";
 
 const CartFooter = () => {
 	const cart = useSelector((state) => state.cart);
+
+	// subtotal
+	const subtotal = cart?.cart.reduce(
+		(acc, product) => acc + product.price * product.quantity,
+		0
+	);
+
+	//  Tax - 2%
+	const tax = subtotal * (1.5 / 100);
+
+	// shipping charge
+	const shippingCharge = 20;
+
+	const discount = (subtotal + tax + shippingCharge) * (2 / 100);
+
+	// total
+	const total = subtotal + tax + shippingCharge - discount;
+
 	return (
 		<div>
 			{cart?.cart && cart?.cart.length ? (
@@ -13,17 +31,21 @@ const CartFooter = () => {
 						<div className="min-w-[300px]">
 							{/* item */}
 							{[
-								{ title: "Sub Totoal", money: 5025.5 },
-								{ title: "Tax", money: 25.5 },
-								{ title: "Shipping", money: 5.5 },
-								{ title: "Discount on Cart", money: 10, isDiffrent: true },
+								{ title: "Sub Totoal", money: subtotal || 0 },
+								{ title: "Tax", money: tax || 0 },
+								{ title: "Shipping", money: shippingCharge || 0 },
+								{
+									title: "Discount on Cart",
+									money: discount || 0,
+									isDiffrent: true,
+								},
 							].map((item) => (
 								<div
 									key={item.title}
 									className="py-2 border-t flex items-center justify-between gap-4"
 								>
 									<p
-										class={`${
+										className={`${
 											item.isDiffrent
 												? "text-primary font-semibold"
 												: "text-secondary"
@@ -40,11 +62,13 @@ const CartFooter = () => {
 					</div>
 					{/* total big full width */}
 					<div className="w-full bg-light flex items-center justify-between py-3 px-2 rounded-sm">
-						<p className="text-primary text-base">Products Count (13)</p>
-						<div className="flex items-center justify-between gap-32 ">
+						<p className="text-primary text-base">
+							Products Count ({cart?.cart ? cart.cart.length : 0})
+						</p>
+						<div className="flex items-center justify-between gap-4 lg:gap-32 ">
 							<p className="text-primary text-2xl font-bold">Total</p>
 							<p className="text-primary text-2xl font-bold">
-								${(500.0).toFixed(2)}
+								${total.toFixed(2)}
 							</p>
 						</div>
 					</div>
